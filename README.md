@@ -1,10 +1,12 @@
 # My Personal Project
 
-## A subtitle
+## Liftfolio
 
-A *bulleted* list:
-- item 1
-- item 2
-- item 3
+The aim of this project is to design a workout tracker application that allows users to log their workouts and view progress over time. Users will be able to record sessions consisting of multiple exercises and edit or remove those exercises. The application will also provide features such as history lookup, progression analysis for individual exercises, and graphical summaries that make it easy to visualize improvements across workout sessions.
 
-An example of text with **bold** and *italic* fonts.  
+This application is designed for:
+- **Beginners** who want a simple, lightweight way to start logging workouts.
+- **Experienced lifters** interested in monitoring long-term progress with graphs, and workout history.
+- **Anyone** who prefers a local solution without ads or subscriptions.
+
+This project interests me because most workout tracking apps I’ve tried include ads, subscriptions, or lock progress graphs behind paywalls. By developing this application, I hope to create a tool that could benefit others who share the same frustrations with existing fitness apps.
