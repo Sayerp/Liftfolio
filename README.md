@@ -10,3 +10,10 @@ This application is designed for:
 - **Anyone** who prefers a local solution without ads or subscriptions.
 
 This project interests me because most workout tracking apps I’ve tried include ads, subscriptions, or lock progress graphs behind paywalls. By developing this application, I hope to create a tool that could benefit others who share the same frustrations with existing fitness apps.
+
+## User Stories
+- As a user, I want to be able to add an exercise to a workout and specify the exercise name, sets, reps, and weight
+- As a user, I want to be able to view a list of all exercises in a workout
+- As a user, I want to be able to edit an exercise from a workout
+- As a user, I want to be able to remove an exercise from a workout
+- As a user, I want to be able to see my progress for a specific exercise over time displayed as a graph
