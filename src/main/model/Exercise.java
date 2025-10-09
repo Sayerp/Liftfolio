@@ -5,7 +5,7 @@ public class Exercise {
 
     // REQUIRES: string length > 0
     // EFFECTS: instantiates an exercise with given name, and an empty ArrayList of
-    // ExerciseSet
+    //          ExerciseSet
     public Exercise(String name) {
         // stub
     }
@@ -25,10 +25,10 @@ public class Exercise {
     }
 
     // REQUIRES: sets.size() > 0, 0 <= index <= sets.size(), reps > 0, weight > 0,
-    // and weight in pounds (lbs)
+    //           and weight in pounds (lbs)
     // MODIFIES: ExerciseSet
     // EFFECTS: updates the reps and weight of ExerciseSet at given index position
-    // in sets
+    //          in sets
     public void editSet(int index, int reps, int weight) {
         // stub
     }
