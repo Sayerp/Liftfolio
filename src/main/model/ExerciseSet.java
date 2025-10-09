@@ -18,10 +18,15 @@ public class ExerciseSet {
         return Math.round(volume * 10.0) / 10.0;
     }
 
-    // EFFECTS: return estimated one rep max rounded to one decimal
+    // EFFECTS: return estimated one rep max rounded to one decimal if reps > 1,
+    //          else return weight
     public double estimateOneRepMax() {
-        double orm = weight * (1 + reps / 30.0);
-        return Math.round(orm * 10.0) / 10.0;
+        if (reps > 1) {
+            double orm = weight * (1 + reps / 30.0);
+            return Math.round(orm * 10.0) / 10.0;
+        } else {
+            return weight;
+        }
     }
 
     public int getReps() {
