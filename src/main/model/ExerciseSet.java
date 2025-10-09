@@ -41,7 +41,7 @@ public class ExerciseSet {
         this.reps = reps;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 }
