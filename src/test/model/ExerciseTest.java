@@ -92,29 +92,29 @@ public class ExerciseTest {
 
     @Test
     void testCalculateTotalVolume() {
-        double tV = ex2.calculateTotalVolume();
-        assertEquals(4105.0, tV);
+        double totalV = ex2.calculateTotalVolume();
+        assertEquals(4105.0, totalV);
     }
 
-    @Test 
+    @Test
     void testCalculateTotalVolumeDecimal() {
         ex1.addSet(5, 225.5);
         ex1.addSet(3, 235);
-        double tV = ex1.calculateTotalVolume();
-        assertEquals(1832.5, tV);
+        double totalV = ex1.calculateTotalVolume();
+        assertEquals(1832.5, totalV);
     }
 
     @Test
     void testCalculateOneRepMaxOneSet() {
         ex1.addSet(3, 135);
-        double oRM = sets1.get(0).estimateOneRepMax();
-        assertEquals(148.5, oRM);
+        double oneRM = sets1.get(0).estimateOneRepMax();
+        assertEquals(148.5, oneRM);
     }
 
     @Test
     void testCalculateOneRepMaxMultipleSets() {
-        double oRM = ex2.calculateOneRepMax();
-        assertEquals(399.0, oRM);
+        double oneRM = ex2.calculateOneRepMax();
+        assertEquals(399.0, oneRM);
     }
 
     @Test
