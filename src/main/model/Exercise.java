@@ -55,6 +55,10 @@ public class Exercise {
         // stub
     }
 
+    public void getName() {
+        // stub
+    }
+
     public void getSets() {
         // stub
     }
