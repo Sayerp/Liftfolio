@@ -7,7 +7,7 @@ public class Exercise {
 
     // REQUIRES: string length > 0
     // EFFECTS: instantiates an exercise with given name, and an empty ArrayList of
-    //          ExerciseSet
+    // ExerciseSet
     public Exercise(String name) {
         // stub
     }
@@ -27,16 +27,17 @@ public class Exercise {
     }
 
     // REQUIRES: sets.size() > 0, 0 <= index <= sets.size(), reps > 0, weight > 0,
-    //           and weight in pounds (lbs)
+    // and weight in pounds (lbs)
     // MODIFIES: ExerciseSet
     // EFFECTS: updates the reps and weight of ExerciseSet at given index position
-    //          in sets
+    // in sets
     public void editSet(int index, int reps, int weight) {
         // stub
     }
 
     // REQUIRES: sets.size() > 0
-    // EFFECTS: return the sum of volume from each ExerciseSet in sets
+    // EFFECTS: return the sum of volume from each ExerciseSet in sets rounded to
+    //          one decimal
     public double calculateTotalVolume() {
         return 0; // stub
     }
@@ -49,6 +50,7 @@ public class Exercise {
 
     // REQUIRES: sets.size() > 0
     // EFFECTS: return the weighted average of weights from each ExerciseSet in sets
+    //          rounded to one decimal
     public double calculateAverageWeight() {
         return 0; // stub
     }
