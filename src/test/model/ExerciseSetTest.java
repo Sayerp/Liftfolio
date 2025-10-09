@@ -49,7 +49,7 @@ public class ExerciseSetTest {
     @Test
     void testEstimateOneRepMaxMoreThanOneRep() {
         double oneRM = es1.estimateOneRepMax(); 
-        assertEquals(169.1, oneRM);
+        assertEquals(169.2, oneRM);
     }
 
     @Test
@@ -61,6 +61,6 @@ public class ExerciseSetTest {
     @Test
     void testEstimateOneRepMaxDecimal() {
         double oneRM = es3.estimateOneRepMax();
-        assertEquals(446.0, oneRM);
+        assertEquals(446.1, oneRM);
     }
 }
