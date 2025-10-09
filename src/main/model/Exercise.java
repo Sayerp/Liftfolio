@@ -15,7 +15,7 @@ public class Exercise {
     // REQUIRES: reps > 0, weight > 0, and weight in pounds (lbs)
     // MODIFIES: this
     // EFFECTS: adds a new ExerciseSet with the given reps and weight to sets
-    public void addSet(int reps, int weight) {
+    public void addSet(int reps, double weight) {
         // stub
     }
 
@@ -31,13 +31,12 @@ public class Exercise {
     // MODIFIES: ExerciseSet
     // EFFECTS: updates the reps and weight of ExerciseSet at given index position
     // in sets
-    public void editSet(int index, int reps, int weight) {
+    public void editSet(int index, int reps, double weight) {
         // stub
     }
 
     // REQUIRES: sets.size() > 0
-    // EFFECTS: return the sum of volume from each ExerciseSet in sets rounded to
-    //          one decimal
+    // EFFECTS: return the sum of volume from each ExerciseSet in sets
     public double calculateTotalVolume() {
         return 0; // stub
     }
