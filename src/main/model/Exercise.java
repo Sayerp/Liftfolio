@@ -37,19 +37,19 @@ public class Exercise {
 
     // REQUIRES: sets.size() > 0
     // EFFECTS: return the sum of volume from each ExerciseSet in sets
-    public int calculateTotalVolume() {
+    public double calculateTotalVolume() {
         return 0; // stub
     }
 
     // REQUIRES: sets.size() > 0
     // EFFECTS: return the largest estimated one rep max in sets
-    public int calculateOneRepMax() {
+    public double calculateOneRepMax() {
         return 0; // stub
     }
 
     // REQUIRES: sets.size() > 0
     // EFFECTS: return the weighted average of weights from each ExerciseSet in sets
-    public int calculateAverageWeight() {
+    public double calculateAverageWeight() {
         return 0; // stub
     }
 
