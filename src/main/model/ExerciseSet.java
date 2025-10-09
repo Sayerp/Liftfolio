@@ -20,7 +20,7 @@ public class ExerciseSet {
 
     // EFFECTS: return estimated one rep max rounded to one decimal
     public double estimateOneRepMax() {
-        double orm = weight * (1 + reps/30.0);
+        double orm = weight * (1 + reps / 30.0);
         return Math.round(orm * 10.0) / 10.0;
     }
 
