@@ -77,8 +77,8 @@ public class ExerciseTest {
         ex2.removeSet(0);
         ex2.removeSet(2);
         assertTrue(sets2.size() == 2);
-        assertEquals(100, sets2.get(0));
-        assertEquals(315, sets2.get(1));
+        assertEquals(100, sets2.get(0).getWeight());
+        assertEquals(315, sets2.get(1).getWeight());
     }
 
     @Test
@@ -108,7 +108,7 @@ public class ExerciseTest {
     void testCalculateOneRepMaxOneSet() {
         ex1.addSet(3, 135);
         double oRM = sets1.get(0).estimateOneRepMax();
-        assertEquals(399.0, oRM);
+        assertEquals(148.5, oRM);
     }
 
     @Test
