@@ -27,11 +27,11 @@ public class ExerciseSet {
         return 0; // stub
     }
 
-    public void setReps() {
+    public void setReps(int reps) {
         // stub
     }
 
-    public void setWeight() {
+    public void setWeight(int weight) {
         // stub
     }
 }
