@@ -2,8 +2,8 @@ package model;
 
 // Represents an exercise set.
 public class ExerciseSet {
-    int reps;
-    double weight;
+    private int reps;
+    private double weight;
 
     // REQUIRES: reps > 0, weight > 0, and weight in pounds (lbs)
     // EFFECTS: constructs an ExerciseSet object with the given reps and weight
