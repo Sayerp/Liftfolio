@@ -9,12 +9,12 @@ public class ExerciseSet {
         // stub
     }
 
-    // EFFECTS: return volume of the exercise set
+    // EFFECTS: return volume of the exercise set with one decimal place
     public double calculateVolume() {
         return 0; // stub
     }
 
-    // EFFECTS: return estimated one rep max
+    // EFFECTS: return estimated one rep max with one decimal place
     public double estimateOneRepMax() {
         return 0; //stub
     }
