@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 // Represents an exercise.
 public class Exercise {
 
@@ -55,11 +57,11 @@ public class Exercise {
         // stub
     }
 
-    public void getName() {
-        // stub
+    public String getName() {
+        return ""; // stub
     }
 
-    public void getSets() {
-        // stub
+    public ArrayList<ExerciseSet> getSets() {
+        return null; // stub
     }
 }
