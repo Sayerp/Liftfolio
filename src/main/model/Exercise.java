@@ -50,6 +50,7 @@ public class Exercise {
     // REQUIRES: sets.size() > 0
     // EFFECTS: return the weighted average of weights from each ExerciseSet in sets
     //          rounded to one decimal
+    //          totalVolume / totalReps
     public double calculateAverageWeight() {
         return 0; // stub
     }
