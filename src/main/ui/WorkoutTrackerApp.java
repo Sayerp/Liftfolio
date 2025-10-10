@@ -1,6 +1,7 @@
 package ui;
 
 import model.Exercise;
+import model.ExerciseSet;
 import model.Workout;
 import model.WorkoutHistory;
 
@@ -73,47 +74,13 @@ public class WorkoutTrackerApp {
     // MODIFIES: this
     // EFFECTS: adds a new workout to workout history
     public void addNewWorkout() {
-        Boolean continueAdding = true;
-        
         System.out.println("Please enter a workout name:");
         String workoutName = this.scanner.nextLine();
+
         Workout workout = new Workout(workoutName);
-
-        while (continueAdding) {
-            System.out.println("\nPlease enter an exercise name:");
-            String exerciseName = this.scanner.nextLine();
-
-            Exercise exercise = new Exercise(exerciseName);
-
-            System.out.println("\nPlease enter the number of sets:");
-            int sets = Integer.valueOf(this.scanner.nextLine());
-
-            for (int i=1; i <= sets; i++) {
-                System.out.println("\n Set-" + i + " Please enter reps:");
-                int reps = Integer.valueOf(this.scanner.nextLine());
-
-                System.out.println("\n Set-" + i + " Please enter weight:");
-                int weight = Integer.valueOf(this.scanner.nextLine());
-
-                exercise.addSet(reps, weight);
-            }
-            
-            workout.addExercise(exercise);
-            System.out.println("Added " + sets + " sets of " + exerciseName + " to " + workoutName + " workout!");
-
-            System.out.println("Would you like to add another exercise to the workout? y/n:");
-            String answer = this.scanner.nextLine();
-
-            while (!answer.equals("y") && !(answer.equals("n"))) {
-                System.out.println("Invalid input. Please enter 'y' or 'n'");
-                answer = this.scanner.nextLine();
-            }
-
-            if (answer.equals("n")) {
-                workouts.addWorkout(workout);
-                continueAdding = false;
-            }
-        }
+        addExercise(workout);
+        workouts.addWorkout(workout);
+        System.out.println("Workout " + workout.getName() + " has been added!");
     }
 
     // MODIFIES: this
@@ -131,19 +98,21 @@ public class WorkoutTrackerApp {
     }
 
     // EFFECTS: displays all workouts and options that can be selected from the view
-    //          workout history menu
+    // workout history menu
     public void displayWorkoutHistoryMenu() {
         int totalWorkouts = workouts.getWorkouts().size();
 
         System.out.println("Workout History\n");
 
-        for (int i=0; i < totalWorkouts; i++) {
+        for (int i = 0; i < totalWorkouts; i++) {
             int workoutNum = i + 1;
 
             System.out.println("Workout " + workoutNum + ": " + workouts.getWorkout(i).getName());
         }
 
-        System.out.println("\nEnter a workout number to edit or remove, or 'b' to return");
+        System.out.println("Please choose an option:\n");
+        System.out.println("Workout number to edit or remove");
+        System.out.println("b: Return");
         printDivider();
     }
 
@@ -152,9 +121,10 @@ public class WorkoutTrackerApp {
         printDivider();
         if (input.equals("b")) {
             return;
-        }
-        else if (1 <= Integer.valueOf(input) && Integer.valueOf(input) <= workouts.getWorkouts().size()) {
-            handleWorkoutMenu();
+        } else if (1 <= Integer.valueOf(input) && Integer.valueOf(input) <= workouts.getWorkouts().size()) {
+            int index = Integer.valueOf(input) - 1;
+            Workout selectedWorkout = workouts.getWorkout(index);
+            handleWorkoutMenu(selectedWorkout);
         } else {
             System.out.println("Invalid input, please try again.");
         }
@@ -162,87 +132,207 @@ public class WorkoutTrackerApp {
     }
 
     // EFFECTS: displays and processes inputs for the view workout menu
-    public void handleWorkoutMenu() {
-        // stub
+    public void handleWorkoutMenu(Workout workout) {
+        displayWorkoutMenu(workout);
+        String input = this.scanner.nextLine();
+        processWorkoutMenuCommands(input, workout);
     }
 
     // EFFECTS: displays exercises in workout and options that can be selected from
-    //          the view workout menu
-    public void displayWorkoutMenu() {
-        // stub
-    }
+    // the view workout menu
+    public void displayWorkoutMenu(Workout workout) {
+        int totalExercises = workout.getExercises().size();
 
-    // EFFECTS: displays all exercises in workout one at a time
-    public void displayWorkout() {
-        // stub
+        System.out.println("Workout: " + workout.getName() + "\n");
+
+        for (int i = 0; i < totalExercises; i++) {
+            int exerciseNum = i + 1;
+
+            System.out.println("Exercise " + exerciseNum + ": " + workout.getExercises().get(i).getName());
+        }
+
+        System.out.println("Please choose an option:\n");
+        System.out.println("Exercise number to edit or remove");
+        System.out.println("a: Add Exercise");
+        System.out.println("n: Rename Workout");
+        System.out.println("b: Return");
+        printDivider();
     }
 
     // EFFECTS: processes user input in the view workout menu
-    public void processWorkoutMenuCommands(String input) {
-        // stub
+    public void processWorkoutMenuCommands(String input, Workout workout) {
+        printDivider();
+        if (input.equals("b")) {
+            return;
+        } else if (input.equals("a")) {
+            addExercise(workout);
+        } else if (input.equals("n")) {
+            renameWorkout(workout);
+        } else if (1 <= Integer.valueOf(input) && Integer.valueOf(input) <= workout.getExercises().size()) {
+            int index = Integer.valueOf(input) - 1;
+            Exercise selectedExercise = workout.getExercises().get(index);
+            handleExerciseMenu(selectedExercise, workout);
+        } else {
+            System.out.println("Invalid input, please try again.");
+        }
+        printDivider();
     }
 
     // MODIFIES: this
     // EFFECTS: adds a new exercise to workout
-    public void addExercise() {
-        // stub
+    public void addExercise(Workout workout) {
+        Boolean continueAdding = true;
+
+        while (continueAdding) {
+            Exercise exercise = createExercise();
+            workout.addExercise(exercise);
+            System.out.println("Added " + exercise.getSets().size() + " sets of "
+                    + exercise.getName() + " to " + workout.getName() + "!");
+
+            System.out.println("Would you like to add another exercise to the workout? y/n:");
+            String answer = this.scanner.nextLine();
+
+            while (!answer.equals("y") && !(answer.equals("n"))) {
+                System.out.println("Invalid input. Please enter 'y' or 'n'");
+                answer = this.scanner.nextLine();
+            }
+
+            if (answer.equals("n")) {
+                continueAdding = false;
+            }
+        }
     }
 
-    // MODIFIES: this
+    // EFFECTS: return exercise created from user input
+    public Exercise createExercise() {
+        System.out.println("\nPlease enter an exercise name:");
+        String exerciseName = this.scanner.nextLine();
+
+        Exercise exercise = new Exercise(exerciseName);
+
+        System.out.println("Please enter the number of sets:");
+        int sets = Integer.valueOf(this.scanner.nextLine());
+
+        for (int i = 1; i <= sets; i++) {
+            System.out.println("Set-" + i + " Please enter reps:");
+            int reps = Integer.valueOf(this.scanner.nextLine());
+
+            System.out.println("Set-" + i + " Please enter weight:");
+            int weight = Integer.valueOf(this.scanner.nextLine());
+
+            exercise.addSet(reps, weight);
+        }
+        return exercise;
+    }
+
+    // MODIFIES: this, Workout
     // EFFECTS: renames the workout
-    public void renameWorkout() {
-        // stub
-    }
+    public void renameWorkout(Workout workout) {
+        System.out.println("\nPlease enter a new workout name:");
+        String workoutName = this.scanner.nextLine();
 
-    // MODIFIES: this
-    // EFFECTS: removes workout from workout history
-    public void removeWorkout() {
-        // stub
+        workout.setName(workoutName);
+
+        System.out.println("\n Workout name changed to " + workoutName);
     }
 
     // EFFECTS: displays and processes inputs for the exercise menu
-    public void handleExerciseMenu() {
-        // stub
+    public void handleExerciseMenu(Exercise exercise, Workout workout) {
+        displayExerciseMenu(exercise);
+        String input = this.scanner.nextLine();
+        processExerciseMenuCommands(input, exercise, workout);
     }
 
     // EFFECTS: displays exercise sets and options that can be selected from the
-    //          exercise menu
-    public void displayExerciseMenu() {
-        // stub
-    }
+    // exercise menu
+    public void displayExerciseMenu(Exercise exercise) {
+        int totalSets = exercise.getSets().size();
 
-    // EFFECTS: displays all sets of an exercise one at a time
-    public void displayExercise() {
-        // stub
+        System.out.println("Exercise: " + exercise.getName() + "\n");
+
+        for (int i = 0; i < totalSets; i++) {
+            int setNum = i + 1;
+
+            System.out.println("Set " + setNum + ": " + exercise.getSets().get(i).toString());
+        }
+
+        System.out.println("Please choose an option:\n");
+        System.out.println("Set number to edit reps/weight");
+        System.out.println("a: Add Set");
+        System.out.println("n: Rename Exercise");
+        System.out.println("r: Remove Exercise");
+        System.out.println("b: Return");
+        printDivider();
     }
 
     // EFFECTS: processes user input in the exercise menu
-    public void processExerciseMenuCommands(String input) {
-        // stub
+    public void processExerciseMenuCommands(String input, Exercise exercise, Workout workout) {
+        printDivider();
+        if (input.equals("b")) {
+            return;
+        } else if (input.equals("a")) {
+            addSet(exercise);
+        } else if (input.equals("r")) {
+            removeExercise(input, exercise, workout);
+        } else if (input.equals("n")) {
+            renameExercise(exercise);
+        } else if (1 <= Integer.valueOf(input) && Integer.valueOf(input) <= exercise.getSets().size()) {
+            int index = Integer.valueOf(input) - 1;
+            ExerciseSet selectedSet = exercise.getSets().get(index);
+            editSet(selectedSet);
+        } else {
+            System.out.println("Invalid input, please try again.");
+        }
+        printDivider();
     }
 
-    // MODIFIES: this
+    // MODIFIES: this, Exercise
     // EFFECTS: adds a new set to exercise
-    public void addSet() {
-        // stub
+    public void addSet(Exercise exercise) {
+        System.out.println("\nPlease enter reps:");
+        int reps = Integer.valueOf(this.scanner.nextLine());
+
+        System.out.println("\nPlease enter weight:");
+        int weight = Integer.valueOf(this.scanner.nextLine());
+
+        exercise.addSet(reps, weight);
+
+        System.out.println("\nNew set with " + reps + " reps at " + weight + " has been added!");
     }
 
-    // MODIFIES: this
+    // MODIFIES: this, ExerciseSet
     // EFFECTS: change the reps and weight of a set
-    public void editSet() {
-        // stub
+    public void editSet(ExerciseSet set) {
+        System.out.println("\nPlease enter reps:");
+        int reps = Integer.valueOf(this.scanner.nextLine());
+
+        System.out.println("\nPlease enter weight:");
+        int weight = Integer.valueOf(this.scanner.nextLine());
+
+        set.setReps(reps);
+        set.setWeight(weight);
+
+        System.out.println("\nSet has been updated!");
     }
 
-    // MODIFIES: this
+    // MODIFIES: this, Exercise
     // EFFECTS: renames the exercise
-    public void renameExercise() {
-        // stub
+    public void renameExercise(Exercise exercise) {
+        System.out.println("\nPlease enter new name for this exercise:");
+        String name = this.scanner.nextLine();
+
+        exercise.setName(name);
+
+        System.out.println("\nExercise has been renamed to " + name);
     }
 
-    // MODIFIES: this
-    // EFFECTS: removes set from exercise
-    public void removeSet() {
-        // stub
+    // MODIFIES: this, Exercise
+    // EFFECTS: removes exercise from workout
+    public void removeExercise(String input, Exercise exercise, Workout workout) {
+        int index = Integer.valueOf(input);
+        workout.removeExercise(index);
+
+        System.out.println("\nExercise has been removed.");
     }
 
     // This method is from the flashcard reviewer lab
