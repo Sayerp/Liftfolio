@@ -32,7 +32,7 @@ public class ExerciseSet {
     // REQUIRES: reps > 0, weight > 0
     // EFFECTS: returns a string representation of this set
     public String toString() {
-        return "";// stub
+        return reps + " x " + weight + " lbs";
     }
 
     public int getReps() {
