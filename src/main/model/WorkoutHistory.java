@@ -24,6 +24,13 @@ public class WorkoutHistory {
         workouts.remove(index);
     }
 
+    // REQUIRES: workouts.size() > 0, and 0 <= index <= workouts.size()
+    // MODIFIES: Workout
+    // EFFECTS: updates name of workout at given index in workouts
+    public void renameWorkout(int index, String name) {
+        // stub
+    }
+
     public ArrayList<Workout> getWorkouts() {
         return workouts;
     }
