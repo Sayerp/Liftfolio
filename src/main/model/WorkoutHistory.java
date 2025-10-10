@@ -1,0 +1,33 @@
+package model;
+
+import java.util.ArrayList;
+
+// Represents a collection of all workouts
+public class WorkoutHistory {
+
+    // EFFECTS: creates a new instance of a workout history with no workouts
+    public WorkoutHistory() {
+        // stub
+    }
+
+    // MODIFIES: this
+    // EFFECTS: adds given workout to workouts
+    public void addWorkout(Workout workout) {
+        // stub
+    }
+
+    // REQUIRES: workouts.size() > 0, and 0 <= index <= workouts.size()
+    // MODIFIES: this
+    // EFFECTS: removes workout at given index position from workouts
+    public void removeWorkout(int index) {
+        // stub
+    }
+
+    public ArrayList<Workout> getWorkoutHistory() {
+        return null; // stub
+    }
+
+    public Workout getWorkout(int index) {
+        return null; // stub
+    }
+}
