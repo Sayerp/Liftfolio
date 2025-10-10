@@ -66,6 +66,6 @@ public class ExerciseSetTest {
 
     @Test
     void testToString() {
-        assertEquals("5x145lbs", es1.toString());
+        assertEquals("5 x 145.0 lbs", es1.toString());
     }
 }
