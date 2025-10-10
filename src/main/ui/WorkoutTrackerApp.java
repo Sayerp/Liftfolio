@@ -110,6 +110,7 @@ public class WorkoutTrackerApp {
             }
 
             if (answer.equals("n")) {
+                workouts.addWorkout(workout);
                 continueAdding = false;
             }
         }
@@ -118,28 +119,46 @@ public class WorkoutTrackerApp {
     // MODIFIES: this
     // EFFECTS: prints a closing message and marks the program as not running
     public void quitApplication() {
-        // stub
+        System.out.println("Thank you for using Liftfolio!");
+        isApplicationRunning = false;
     }
 
     // EFFECTS: displays and processes inputs for the view workout history menu
     public void handleWorkoutHistoryMenu() {
-        // stub
+        displayWorkoutHistoryMenu();
+        String input = this.scanner.nextLine();
+        processWorkoutHistoryMenuCommands(input);
     }
 
-    // EFFECTS: displays all workuts and options that can be selected from the view
+    // EFFECTS: displays all workouts and options that can be selected from the view
     //          workout history menu
     public void displayWorkoutHistoryMenu() {
-        // stub
-    }
+        int totalWorkouts = workouts.getWorkouts().size();
 
-    // EFFECTS: displays all workouts one at a time
-    public void displayWorkoutHistory() {
-        // stub
+        System.out.println("Workout History\n");
+
+        for (int i=0; i < totalWorkouts; i++) {
+            int workoutNum = i + 1;
+
+            System.out.println("Workout " + workoutNum + ": " + workouts.getWorkout(i).getName());
+        }
+
+        System.out.println("\nEnter a workout number to edit or remove, or 'b' to return");
+        printDivider();
     }
 
     // EFFECTS: processes user input in the view workout history menu
     public void processWorkoutHistoryMenuCommands(String input) {
-        // stub
+        printDivider();
+        if (input.equals("b")) {
+            return;
+        }
+        else if (1 <= Integer.valueOf(input) && Integer.valueOf(input) <= workouts.getWorkouts().size()) {
+            handleWorkoutMenu();
+        } else {
+            System.out.println("Invalid input, please try again.");
+        }
+        printDivider();
     }
 
     // EFFECTS: displays and processes inputs for the view workout menu
