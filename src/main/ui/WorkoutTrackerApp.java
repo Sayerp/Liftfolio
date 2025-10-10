@@ -71,7 +71,7 @@ public class WorkoutTrackerApp {
         printDivider();
     }
 
-    // MODIFIES: this
+    // MODIFIES: this 
     // EFFECTS: adds a new workout to workout history
     public void addNewWorkout() {
         System.out.println("Please enter a workout name:");
@@ -176,7 +176,7 @@ public class WorkoutTrackerApp {
         }
     }
 
-    // MODIFIES: this
+    // MODIFIES: this, Exercise
     // EFFECTS: adds a new exercise to workout
     public void addExercise(Workout workout) {
         Boolean continueAdding = true;
@@ -324,6 +324,7 @@ public class WorkoutTrackerApp {
         System.out.println("\nExercise has been renamed to " + name);
     }
 
+    // REQUIRES: getExercises.size() > 0, and 0 <= index < getExercises.size()
     // MODIFIES: this, Exercise
     // EFFECTS: removes exercise from workout
     public void removeExercise(String input, Exercise exercise, Workout workout) {
