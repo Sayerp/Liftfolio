@@ -1,6 +1,6 @@
 package model;
 
-// Represents an exercise set.
+// Represents an exercise set with reps and weight
 public class ExerciseSet {
     private int reps;
     private double weight;
