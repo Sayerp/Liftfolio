@@ -48,7 +48,7 @@ public class WorkoutTest {
         w1.addExercise(e1);
         Exercise ex = w1.getExercises().get(0);
         assertTrue(exercises1.size() == 1);
-        assertTrue(ex.getName().equals("Squat"));
+        assertTrue(ex.getName().equals("Squats"));
     }
 
     @Test
@@ -59,7 +59,7 @@ public class WorkoutTest {
         Exercise ex1 = w1.getExercises().get(0);
         Exercise ex2 = w1.getExercises().get(1);
         assertTrue(exercises1.size() == 2);
-        assertTrue(ex1.getName().equals("Squat"));
+        assertTrue(ex1.getName().equals("Squats"));
         assertTrue(ex2.getName().equals("Leg Press"));
     }
 
@@ -96,16 +96,16 @@ public class WorkoutTest {
         ExerciseSet set = ex1.getSets().get(0);
         assertEquals(5, set.getReps());
         assertEquals(145, set.getWeight());
-        w1.editExercise(0, 0, 1, 175);
-        assertEquals(5, set.getReps());
-        assertEquals(145, set.getWeight());
+        w2.editExercise(0, 0, 1, 175);
+        assertEquals(1, set.getReps());
+        assertEquals(175, set.getWeight());
     }
 
     @Test
     void testEditExerciseName() {
         Exercise ex1 = w2.getExercises().get(0);
-        assertTrue(ex1.getName().equals("Squat"));
-        w1.editExercise(0, "Pull up");
+        assertTrue(ex1.getName().equals("Squats"));
+        w2.editExercise(0, "Pull up");
         assertTrue(ex1.getName().equals("Pull up"));
     }
 }
