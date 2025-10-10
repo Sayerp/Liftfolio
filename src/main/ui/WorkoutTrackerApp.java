@@ -272,7 +272,7 @@ public class WorkoutTrackerApp {
         } else if (input.equals("a")) {
             addSet(exercise);
         } else if (input.equals("r")) {
-            removeExercise(input, exercise, workout);
+            removeExercise(exercise, workout);
         } else if (input.equals("n")) {
             renameExercise(exercise);
         } else if (1 <= Integer.valueOf(input) && Integer.valueOf(input) <= exercise.getSets().size()) {
@@ -324,12 +324,11 @@ public class WorkoutTrackerApp {
         System.out.println("\nExercise has been renamed to " + name);
     }
 
-    // REQUIRES: getExercises.size() > 0, and 0 <= index < getExercises.size()
+    // REQUIRES: getExercises.size() > 0
     // MODIFIES: this, Exercise
     // EFFECTS: removes exercise from workout
-    public void removeExercise(String input, Exercise exercise, Workout workout) {
-        int index = Integer.valueOf(input);
-        workout.removeExercise(index);
+    public void removeExercise(Exercise exercise, Workout workout) {
+        workout.getExercises().remove(exercise);
 
         System.out.println("\nExercise has been removed.");
     }
