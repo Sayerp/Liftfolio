@@ -98,7 +98,7 @@ public class WorkoutTrackerApp {
     }
 
     // EFFECTS: displays all workouts and options that can be selected from the view
-    // workout history menu
+    //          workout history menu
     public void displayWorkoutHistoryMenu() {
         int totalWorkouts = workouts.getWorkouts().size();
 
@@ -110,7 +110,7 @@ public class WorkoutTrackerApp {
             System.out.println("Workout " + workoutNum + ": " + workouts.getWorkout(i).getName());
         }
 
-        System.out.println("Please choose an option:\n");
+        System.out.println("\nPlease choose an option:\n");
         System.out.println("Workout number to edit or remove");
         System.out.println("b: Return");
         printDivider();
@@ -128,7 +128,6 @@ public class WorkoutTrackerApp {
         } else {
             System.out.println("Invalid input, please try again.");
         }
-        printDivider();
     }
 
     // EFFECTS: displays and processes inputs for the view workout menu
@@ -151,7 +150,7 @@ public class WorkoutTrackerApp {
             System.out.println("Exercise " + exerciseNum + ": " + workout.getExercises().get(i).getName());
         }
 
-        System.out.println("Please choose an option:\n");
+        System.out.println("\nPlease choose an option:\n");
         System.out.println("Exercise number to edit or remove");
         System.out.println("a: Add Exercise");
         System.out.println("n: Rename Workout");
@@ -175,7 +174,6 @@ public class WorkoutTrackerApp {
         } else {
             System.out.println("Invalid input, please try again.");
         }
-        printDivider();
     }
 
     // MODIFIES: this
@@ -203,6 +201,7 @@ public class WorkoutTrackerApp {
         }
     }
 
+    // MODIFIES: Exercise
     // EFFECTS: return exercise created from user input
     public Exercise createExercise() {
         System.out.println("\nPlease enter an exercise name:");
@@ -244,7 +243,7 @@ public class WorkoutTrackerApp {
     }
 
     // EFFECTS: displays exercise sets and options that can be selected from the
-    // exercise menu
+    //          exercise menu
     public void displayExerciseMenu(Exercise exercise) {
         int totalSets = exercise.getSets().size();
 
@@ -256,7 +255,7 @@ public class WorkoutTrackerApp {
             System.out.println("Set " + setNum + ": " + exercise.getSets().get(i).toString());
         }
 
-        System.out.println("Please choose an option:\n");
+        System.out.println("\nPlease choose an option:\n");
         System.out.println("Set number to edit reps/weight");
         System.out.println("a: Add Set");
         System.out.println("n: Rename Exercise");
@@ -283,7 +282,6 @@ public class WorkoutTrackerApp {
         } else {
             System.out.println("Invalid input, please try again.");
         }
-        printDivider();
     }
 
     // MODIFIES: this, Exercise
