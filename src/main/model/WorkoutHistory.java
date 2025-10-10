@@ -23,7 +23,7 @@ public class WorkoutHistory {
         // stub
     }
 
-    public ArrayList<Workout> getWorkoutHistory() {
+    public ArrayList<Workout> getWorkouts() {
         return null; // stub
     }
 
