@@ -86,4 +86,12 @@ public class WorkoutHistoryTest {
         assertTrue(workout.getName().equals("Chest"));
     }
 
+    @Test
+    void testRenameWorkout() {
+        Workout workout = wh2.getWorkout(0);
+        assertTrue(workout.getName().equals("Arms"));
+        wh2.renameWorkout(0, "Back");
+        assertTrue(workout.getName().equals("Back"));
+    }
+
 }
