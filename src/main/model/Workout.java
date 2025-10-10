@@ -4,25 +4,28 @@ import java.util.ArrayList;
 
 // Represents a workout with a name and exercises
 public class Workout {
+    private String name;
+    private ArrayList<Exercise> exercises;
 
     // REQUIRES: string length > 0
     // EFFECTS: instantiates a workout with given name, and and empty ArrayList of
     // Exercise
     public Workout(String name) {
-        // stub
+        this.name = name;
+        exercises = new ArrayList<>();
     }
 
     // MODIFIES: this
     // EFFECTS: adds a new Exercise with to exercises
     public void addExercise(Exercise exercise) {
-        // stub
+        exercises.add(exercise);
     }
 
     // REQUIRES: exercises.size() > 0, and 0 <= index <= exercises.size()
     // MODIFIES: this
     // EFFECTS: removes Exercise at given index position from exercises
     public void removeExercise(int index) {
-        // stub
+        exercises.remove(index);
     }
 
     // REQUIRES: exercises.size() > 0, 0 <= exerciseIndex <= exercises.size(),
@@ -32,25 +35,25 @@ public class Workout {
     // EFFECTS: updates reps and weight of ExerciseSet at setIndex for Exercise at
     //          exerciseIndex in exercises
     public void editExercise(int exerciseIndex, int setIndex, int reps, double weight) {
-        // stub
+        exercises.get(exerciseIndex).editSet(setIndex, reps, weight);
     }
 
     // REQUIRES: exercises.size() > 0, 0 <= exerciseIndex <= exercises.size()
     // MODIFIES: Exercise
     // EFFECTS: updates name of Exercise at exerciseIndex in exercises
     public void editExercise(int exerciseIndex, String name) {
-        // stub
+        exercises.get(exerciseIndex).setName(name);
     }
 
     public void setName(String name) {
-        // stub
+        this.name = name;
     }
 
     public ArrayList<Exercise> getExercises() {
-        return null; // stub
+        return exercises;
     }
 
     public String getName() {
-        return "";
+        return this.name;
     }
 }
