@@ -176,7 +176,7 @@ public class WorkoutTrackerApp {
         }
     }
 
-    // MODIFIES: this, Exercise
+    // MODIFIES: Workout, Exercise
     // EFFECTS: adds a new exercise to workout
     public void addExercise(Workout workout) {
         Boolean continueAdding = true;
