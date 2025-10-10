@@ -16,7 +16,7 @@ public class Workout {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds a new Exercise with to exercises
+    // EFFECTS: adds a new Exercise to exercises
     public void addExercise(Exercise exercise) {
         exercises.add(exercise);
     }
