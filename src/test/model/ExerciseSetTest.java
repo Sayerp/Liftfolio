@@ -63,4 +63,9 @@ public class ExerciseSetTest {
         double oneRM = es3.estimateOneRepMax();
         assertEquals(446.1, oneRM);
     }
+
+    @Test
+    void testToString() {
+        assertEquals("5x145lbs", es1.toString());
+    }
 }
