@@ -2,14 +2,13 @@ package model;
 
 import java.util.ArrayList;
 
-// Represents an exercise.
+// Represents an exercise with a name and sets.
 public class Exercise {
     private String name;
     private ArrayList<ExerciseSet> sets;
 
     // REQUIRES: string length > 0
-    // EFFECTS: instantiates an exercise with given name, and an empty ArrayList of
-    //          ExerciseSet
+    // EFFECTS: instantiates an exercise with given name and no sets
     public Exercise(String name) {
         this.name = name;
         sets = new ArrayList<>();
@@ -17,24 +16,23 @@ public class Exercise {
 
     // REQUIRES: reps > 0, weight > 0, and weight in pounds (lbs)
     // MODIFIES: this
-    // EFFECTS: adds a new ExerciseSet with the given reps and weight to sets
+    // EFFECTS: adds a new set with the given reps and weight to sets
     public void addSet(int reps, double weight) {
         ExerciseSet set = new ExerciseSet(reps, weight);
         sets.add(set);
     }
 
-    // REQUIRES: sets.size() > 0, and 0 <= index <= sets.size()
+    // REQUIRES: sets.size() > 0, and 0 <= index < sets.size()
     // MODIFIES: this
-    // EFFECTS: removes ExerciseSet at given index position from sets
+    // EFFECTS: removes set at given index position from sets
     public void removeSet(int index) {
         sets.remove(index);
     }
 
-    // REQUIRES: sets.size() > 0, 0 <= index <= sets.size(), reps > 0, weight > 0,
-    // and weight in pounds (lbs)
+    // REQUIRES: sets.size() > 0, 0 <= index < sets.size(), reps > 0, weight > 0,
+    //           and weight in pounds (lbs)
     // MODIFIES: ExerciseSet
-    // EFFECTS: updates the reps and weight of ExerciseSet at given index position
-    //          in sets
+    // EFFECTS: updates the reps and weight of set at given index position in sets
     public void editSet(int index, int reps, double weight) {
         ExerciseSet set = sets.get(index);
         set.setReps(reps);
@@ -42,7 +40,7 @@ public class Exercise {
     }
 
     // REQUIRES: sets.size() > 0
-    // EFFECTS: return the sum of volume from each ExerciseSet in sets
+    // EFFECTS: return the sum of volume from each set in sets
     public double calculateTotalVolume() {
         double totalVolume = 0;
 
@@ -68,7 +66,7 @@ public class Exercise {
     }
 
     // REQUIRES: sets.size() > 0
-    // EFFECTS: return the weighted average of weights from each ExerciseSet in sets
+    // EFFECTS: return the weighted average of weights from each set in sets
     //          rounded to one decimal
     //          totalVolume / totalReps
     public double calculateAverageWeight() {
