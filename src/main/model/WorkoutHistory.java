@@ -28,7 +28,7 @@ public class WorkoutHistory {
     // MODIFIES: Workout
     // EFFECTS: updates name of workout at given index in workouts
     public void renameWorkout(int index, String name) {
-        // stub
+        workouts.get(index).setName(name);
     }
 
     public ArrayList<Workout> getWorkouts() {
