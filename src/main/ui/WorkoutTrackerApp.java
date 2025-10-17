@@ -7,8 +7,11 @@ import model.WorkoutHistory;
 
 import java.util.Scanner;
 
+import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
+
 // Workout tracker application that allows the user to log and view workouts
 // Structure of this class was made by referencing FlashcardReviewer from lab 4
+@ExcludeFromJacocoGeneratedReport
 public class WorkoutTrackerApp {
     private WorkoutHistory workouts;
 
