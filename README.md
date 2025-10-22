@@ -16,4 +16,6 @@ This project interests me because most workout tracking apps I’ve tried includ
 - As a user, I want to be able to view a list of all exercises in a workout
 - As a user, I want to be able to edit an exercise from a workout
 - As a user, I want to be able to remove an exercise from a workout
+- As a user, I want to have the option to save my workout history to a file
+- As a user, I want to have the option to load my workout history from a file
 - As a user, I want to be able to see my progress for a specific exercise over time displayed as a graph
