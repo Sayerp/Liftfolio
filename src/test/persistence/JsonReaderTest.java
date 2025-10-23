@@ -19,7 +19,7 @@ public class JsonReaderTest extends JsonTest {
     void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/noFile.json");
         try {
-            WorkoutHistory wh = reader.read();
+            reader.read();
             fail("IOException expected");
         } catch (Exception e) {
             // pass
