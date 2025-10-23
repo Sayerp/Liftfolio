@@ -1,0 +1,53 @@
+{
+    "workouts": [
+        {
+            "name": "Leg Day",
+            "exercises": [
+                {
+                    "name": "Squats",
+                    "sets": [
+                        {
+                            "reps": 6,
+                            "weight": 225
+                        },
+                        {
+                            "reps": 3,
+                            "weight": 185
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Chest Day",
+            "exercises": [
+                {
+                    "name": "Bench Press",
+                    "sets": [
+                        {
+                            "reps": 5,
+                            "weight": 165
+                        },
+                        {
+                            "reps": 4,
+                            "weight": 145
+                        }
+                    ]
+                },
+                {
+                    "name": "Cable Flys",
+                    "sets": [
+                        {
+                            "reps": 8,
+                            "weight": 60
+                        },
+                        {
+                            "reps": 5,
+                            "weight": 50
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
