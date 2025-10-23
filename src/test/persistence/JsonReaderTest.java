@@ -28,7 +28,7 @@ public class JsonReaderTest extends JsonTest {
 
     @Test
     void testReaderEmptyWorkoutHistory() {
-        JsonReader reader = new JsonReader(".data/testReaderEmptyWorkoutHistory.json");
+        JsonReader reader = new JsonReader("./data/testReaderEmptyWorkoutHistory.json");
         try {
             WorkoutHistory wh = reader.read();
             assertEquals(0, wh.getWorkouts().size());
