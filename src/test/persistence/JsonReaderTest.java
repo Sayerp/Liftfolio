@@ -54,7 +54,7 @@ public class JsonReaderTest extends JsonTest {
             checkExerciseSet(3, 185, squats.getSets().get(1));
 
             Workout chestDay = workouts.get(1);
-            assertEquals("Chest Day", chestDay);
+            assertEquals("Chest Day", chestDay.getName());
 
             Exercise bench = chestDay.getExercises().get(0);
             checkExercise("Bench Press", 1, bench);
