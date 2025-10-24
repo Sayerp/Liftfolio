@@ -101,11 +101,20 @@ public class Exercise implements Writable {
     @Override
     // EFFECTS: returns Exercise as a JSON containing name and array of sets
     public JSONObject toJson() {
-        return new JSONObject();
+        JSONObject exerciseJson = new JSONObject();
+        exerciseJson.put("name", name);
+        exerciseJson.put("sets", setsToJson());
+        return exerciseJson;
     }
 
     // EFFECTS: returns sets in this exercise as a JSON array
     private JSONArray setsToJson() {
-        return new JSONArray();
+        JSONArray setsArray = new JSONArray();
+
+        for (ExerciseSet set : sets) {
+            setsArray.put(set.toJson());
+        }
+        
+        return setsArray;
     }
 }
