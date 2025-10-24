@@ -58,6 +58,9 @@ public class ExerciseSet implements Writable {
     @Override
     // EFFECTS: returns ExerciseSet as a JSON containing reps and weight
     public JSONObject toJson() {
-        return new JSONObject();
+        JSONObject set = new JSONObject();
+        set.put("reps", reps);
+        set.put("weight", weight);
+        return set;
     }
 }
