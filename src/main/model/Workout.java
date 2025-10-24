@@ -64,11 +64,20 @@ public class Workout implements Writable {
     @Override
     // EFFECTS: returns Workout as a JSON containing name and array of exercises
     public JSONObject toJson() {
-        return new JSONObject();
+        JSONObject workoutJson = new JSONObject();
+        workoutJson.put("name", name);
+        workoutJson.put("exercises", exercisesToJson());
+        return workoutJson;
     }
 
     // EFFECTS: returns exercises in this workout as a JSON array
     private JSONArray exercisesToJson() {
-        return new JSONArray();
+        JSONArray exercisesArray = new JSONArray();
+
+        for (Exercise exercise : exercises) {
+            exercisesArray.put(exercise.toJson());
+        }
+
+        return exercisesArray;
     }
 }
