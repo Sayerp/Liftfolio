@@ -2,8 +2,13 @@ package model;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 // Represents a collection of all workouts
-public class WorkoutHistory {
+public class WorkoutHistory implements Writable {
     private ArrayList<Workout> workouts;
 
     // EFFECTS: creates a new instance of a workout history with no workouts
@@ -37,5 +42,16 @@ public class WorkoutHistory {
 
     public Workout getWorkout(int index) {
         return workouts.get(index);
+    }
+
+    @Override
+    // EFFECTS: returns WorkoutHistory as a JSON containing an array of workouts
+    public JSONObject toJson() {
+        return new JSONObject();
+    }
+
+    // EFFECTS: returns workouts in this workout history as a JSON array
+    private JSONArray workoutsToJson() {
+        return new JSONArray();
     }
 }
