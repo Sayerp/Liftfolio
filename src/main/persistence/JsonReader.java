@@ -27,8 +27,8 @@ public class JsonReader {
     // EFFECTS: reads workout histroy from file and returns it;
     //          throws IOException if an error occurs reading data from file
     public WorkoutHistory read() throws IOException {
-        String jsonData = readFile(source);
-        JSONObject workoutsJson = new JSONObject(jsonData);
+        String workoutHistoryData = readFile(source);
+        JSONObject workoutsJson = new JSONObject(workoutHistoryData);
         return parseWorkoutHistory(workoutsJson);
     }
 
