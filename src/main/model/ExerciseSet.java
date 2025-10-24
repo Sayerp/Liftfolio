@@ -5,7 +5,7 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 // Represents an exercise set with reps and weight
-public class ExerciseSet implements Writable{
+public class ExerciseSet implements Writable {
     private int reps;
     private double weight;
 
