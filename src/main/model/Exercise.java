@@ -2,8 +2,13 @@ package model;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 // Represents an exercise with a name and sets.
-public class Exercise {
+public class Exercise implements Writable {
     private String name;
     private ArrayList<ExerciseSet> sets;
 
@@ -91,5 +96,16 @@ public class Exercise {
 
     public ArrayList<ExerciseSet> getSets() {
         return this.sets;
+    }
+
+    @Override
+    // EFFECTS: returns Exercise as a JSON containing name and array of sets
+    public JSONObject toJson() {
+        return new JSONObject();
+    }
+
+    // EFFECTS: returns sets in this workout as a JSON array
+    private JSONArray setsToJson() {
+        return new JSONArray();
     }
 }
