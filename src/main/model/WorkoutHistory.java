@@ -47,11 +47,19 @@ public class WorkoutHistory implements Writable {
     @Override
     // EFFECTS: returns WorkoutHistory as a JSON containing an array of workouts
     public JSONObject toJson() {
-        return new JSONObject();
+        JSONObject workoutsJson = new JSONObject();
+        workoutsJson.put("workouts", workoutsToJson());
+        return workoutsJson;
     }
 
     // EFFECTS: returns workouts in this workout history as a JSON array
     private JSONArray workoutsToJson() {
-        return new JSONArray();
+        JSONArray workoutsArray = new JSONArray();
+
+        for (Workout workout : workouts) {
+            workoutsArray.put(workout.toJson());
+        }
+
+        return workoutsArray;
     }
 }
