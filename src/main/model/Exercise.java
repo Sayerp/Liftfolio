@@ -104,7 +104,7 @@ public class Exercise implements Writable {
         return new JSONObject();
     }
 
-    // EFFECTS: returns sets in this workout as a JSON array
+    // EFFECTS: returns sets in this exercise as a JSON array
     private JSONArray setsToJson() {
         return new JSONArray();
     }
