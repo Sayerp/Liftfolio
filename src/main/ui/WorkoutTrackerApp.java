@@ -336,6 +336,19 @@ public class WorkoutTrackerApp {
         System.out.println("\nExercise has been removed.");
     }
 
+    // This method is from the JsonSerializationDemo
+    // EFFECTS: saves workout history to file
+    private void saveWorkoutHistory(){
+        // stub
+    }
+
+    // This method is from the JsonSerializationDemo
+    // MODIFIES this
+    // EFFECTS: loads workout history from file
+    private void loadWorkoutHistory() {
+        // stub
+    }
+
     // This method is from the flashcard reviewer lab
     // EFFECTS: prints a line of dashes to act as a divider
     private void printDivider() {
