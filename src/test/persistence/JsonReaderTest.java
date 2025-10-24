@@ -3,11 +3,7 @@ package persistence;
 import org.junit.jupiter.api.Test;
 
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
-import model.Exercise;
-import model.Workout;
 import model.WorkoutHistory;
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
