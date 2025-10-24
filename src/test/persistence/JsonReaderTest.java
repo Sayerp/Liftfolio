@@ -7,6 +7,8 @@ import model.WorkoutHistory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.IOException;
+
 @ExcludeFromJacocoGeneratedReport
 // Tests in this class are inspired from JsonSerializaitonDemo
 public class JsonReaderTest extends JsonTest {
@@ -17,7 +19,7 @@ public class JsonReaderTest extends JsonTest {
         try {
             reader.read();
             fail("IOException expected");
-        } catch (Exception e) {
+        } catch (IOException e) {
             // pass
         }
     }
@@ -28,7 +30,7 @@ public class JsonReaderTest extends JsonTest {
         try {
             WorkoutHistory wh = reader.read();
             assertEquals(0, wh.getWorkouts().size());
-        } catch (Exception e) {
+        } catch (IOException e) {
             fail("Couldn't read from file");
         }
     }
@@ -39,7 +41,7 @@ public class JsonReaderTest extends JsonTest {
         try {
             WorkoutHistory wh = reader.read();
             checkGeneralWorkoutHistory(wh);
-        } catch (Exception e) {
+        } catch (IOException e) {
             fail("Couldn't read from file");
         }
     }
