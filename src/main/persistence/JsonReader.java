@@ -23,7 +23,7 @@ public class JsonReader {
         this.source = source;
     }
 
-    // read() method is from JsonSerializationDemo
+    // Method is from JsonSerializationDemo
     // EFFECTS: reads workout histroy from file and returns it;
     //          throws IOException if an error occurs reading data from file
     public WorkoutHistory read() throws IOException {
@@ -32,7 +32,7 @@ public class JsonReader {
         return parseWorkoutHistory(workoutsJson);
     }
 
-    // readFile() method is from JsonSerializationDemo
+    // Method is from JsonSerializationDemo
     // EFFECTS: reads source file as string and returns it
     private String readFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
