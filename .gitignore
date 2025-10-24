@@ -1,3 +1,4 @@
 *.class
 data/testWriterEmptyWorkoutHistory.json
 data/testWriterGeneralWorkoutHistory.json
+data/workouts.json
