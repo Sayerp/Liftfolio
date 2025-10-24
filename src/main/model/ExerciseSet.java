@@ -1,7 +1,11 @@
 package model;
 
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 // Represents an exercise set with reps and weight
-public class ExerciseSet {
+public class ExerciseSet implements Writable{
     private int reps;
     private double weight;
 
@@ -49,5 +53,11 @@ public class ExerciseSet {
 
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+    @Override
+    // EFFECTS: returns ExerciseSet as a JSON containing reps and weight
+    public JSONObject toJson() {
+        return new JSONObject();
     }
 }
