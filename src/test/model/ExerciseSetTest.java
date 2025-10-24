@@ -2,6 +2,7 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -70,5 +71,12 @@ public class ExerciseSetTest {
     @Test
     void testToString() {
         assertEquals("5 x 145.0 lbs", es1.toString());
+    }
+
+    @Test
+    void testToJson() {
+        JSONObject setJson = es1.toJson();
+        assertEquals(5, setJson.get("reps"));
+        assertEquals(145.0, setJson.get("weight"));
     }
 }

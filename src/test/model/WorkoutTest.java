@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -110,5 +112,26 @@ public class WorkoutTest {
         assertTrue(ex1.getName().equals("Squats"));
         w2.editExercise(0, "Pull up");
         assertTrue(ex1.getName().equals("Pull up"));
+    }
+
+    @Test 
+    void testToJson() {
+        JSONObject workoutJson = w2.toJson();
+        assertEquals("Legs", workoutJson.get("name"));
+
+        JSONArray exercisesArray = workoutJson.getJSONArray("exercises");
+        assertEquals(3, exercisesArray.length());
+
+        JSONObject ex1 = exercisesArray.getJSONObject(0);
+        assertEquals("Squats", ex1.get("name"));
+        assertEquals(1, ex1.getJSONArray("sets").length());
+
+        JSONObject ex2 = exercisesArray.getJSONObject(1);
+        assertEquals("Leg Press", ex2.get("name"));
+        assertEquals(1, ex2.getJSONArray("sets").length());
+
+        JSONObject ex3 = exercisesArray.getJSONObject(2);
+        assertEquals("Calf Raise", ex3.get("name"));
+        assertEquals(0, ex3.getJSONArray("sets").length());
     }
 }

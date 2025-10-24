@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -124,5 +126,18 @@ public class ExerciseTest {
     void testCalculateAverageWeight() {
         double avgWeight = ex2.calculateAverageWeight();
         assertEquals(186.6, avgWeight);
+    }
+
+    @Test 
+    void testToJson() {
+        JSONObject exerciseJson = ex2.toJson();
+        assertEquals("multiple sets", exerciseJson.get("name"));
+
+        JSONArray setsArray = exerciseJson.getJSONArray("sets");
+        assertEquals(4, setsArray.length());
+
+        JSONObject set1 = setsArray.getJSONObject(0);
+        assertEquals(5, set1.get("reps"));
+        assertEquals(225.0, set1.get("weight"));
     }
 }
