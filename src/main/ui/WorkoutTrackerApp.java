@@ -4,7 +4,11 @@ import model.Exercise;
 import model.ExerciseSet;
 import model.Workout;
 import model.WorkoutHistory;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
@@ -13,7 +17,10 @@ import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 // Structure of this class was made by referencing FlashcardReviewer from lab 4
 @ExcludeFromJacocoGeneratedReport
 public class WorkoutTrackerApp {
+    private static final String JSON_STORE = "./data/workouts.json";
     private WorkoutHistory workouts;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     private Scanner scanner;
     private Boolean isApplicationRunning;
@@ -36,6 +43,8 @@ public class WorkoutTrackerApp {
     public void init() {
         this.workouts = new WorkoutHistory();
         this.scanner = new Scanner(System.in);
+        this.jsonWriter = new JsonWriter(JSON_STORE);
+        this.jsonReader = new JsonReader(JSON_STORE);
         this.isApplicationRunning = true;
     }
 
@@ -51,7 +60,9 @@ public class WorkoutTrackerApp {
         System.out.println("Please choose an option:\n");
         System.out.println("1: Add Workout");
         System.out.println("2: View/Edit Workouts");
-        System.out.println("3: Close Application");
+        System.out.println("3: Save Workouts");
+        System.out.println("4: Load Workouts");
+        System.out.println("5: Close Application");
         printDivider();
     }
 
@@ -66,6 +77,12 @@ public class WorkoutTrackerApp {
                 handleWorkoutHistoryMenu();
                 break;
             case "3":
+                saveWorkoutHistory();
+                break;
+            case "4":
+                loadWorkoutHistory();
+                break;
+            case "5":
                 quitApplication();
                 break;
             default:
@@ -336,17 +353,29 @@ public class WorkoutTrackerApp {
         System.out.println("\nExercise has been removed.");
     }
 
-    // This method is from the JsonSerializationDemo
+    // This method is inspired by the JsonSerializationDemo
     // EFFECTS: saves workout history to file
-    private void saveWorkoutHistory(){
-        // stub
+    private void saveWorkoutHistory() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(workouts);
+            jsonWriter.close();
+            System.out.println("Saved " + workouts.getWorkouts().size() + " workouts to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
     }
 
-    // This method is from the JsonSerializationDemo
+    // This method is inspired by the JsonSerializationDemo
     // MODIFIES this
     // EFFECTS: loads workout history from file
     private void loadWorkoutHistory() {
-        // stub
+        try {
+            workouts = jsonReader.read();
+            System.out.println("Loaded " + workouts.getWorkouts().size() + " workouts from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
     // This method is from the flashcard reviewer lab
