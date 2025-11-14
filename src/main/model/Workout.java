@@ -80,4 +80,10 @@ public class Workout implements Writable {
 
         return exercisesArray;
     }
+
+    // EFFECTS: return name of workout as string representation of workout
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }
