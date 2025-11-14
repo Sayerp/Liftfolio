@@ -3,13 +3,15 @@ package ui;
 import javax.swing.*;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Insets;
 
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 import model.Workout;
 import model.WorkoutHistory;
 
-// This class was made by referencing SmartHomeUI from B1 practice
+// This class was made by referencing SmartHomeUI from B1 practice, geeksforgeeks, and Java Swing documentation
 // Represents the main application user interface for the workout tracker
 @ExcludeFromJacocoGeneratedReport
 public class WorkoutTrackerUI extends JFrame {
@@ -24,6 +26,10 @@ public class WorkoutTrackerUI extends JFrame {
     private JButton removeButton;
     private JButton saveButton;
     private JButton loadButton;
+    private JButton addExerciseButton;
+
+    private JLabel workoutNameLabel;
+    private JTextArea workoutInfo;
 
     // MODIFIES: this
     // EFFECTS: creates WorkoutTrackerUI, loads workouts, displays sidebar and main panel
@@ -56,7 +62,7 @@ public class WorkoutTrackerUI extends JFrame {
     //          buttons for save, load, start new workout, remove workout at bottom 
     private JPanel createLeftPanel() {
         JPanel leftPanel = new JPanel(new BorderLayout());
-        
+
         JLabel logoLabel = new JLabel(new ImageIcon("./data/logo.png"));
         logoLabel.setHorizontalAlignment(JLabel.CENTER);
         leftPanel.add(logoLabel, BorderLayout.NORTH);
@@ -90,7 +96,29 @@ public class WorkoutTrackerUI extends JFrame {
     // MODIFIES: this
     // EFFECTS: return panel with workout name label at top, and scrollable workout info in center 
     private JPanel createRightPanel() {
-        return new JPanel();
+        JPanel rightPanel = new JPanel(new BorderLayout());
+
+        workoutNameLabel = new JLabel("Select or start a workout");
+        workoutNameLabel.setHorizontalAlignment(JLabel.CENTER);
+        workoutNameLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        rightPanel.add(workoutNameLabel, BorderLayout.NORTH);
+
+        workoutInfo = new JTextArea();
+        workoutInfo.setEditable(false);
+        workoutInfo.setLineWrap(true);
+        workoutInfo.setWrapStyleWord(true);
+        workoutInfo.setMargin(new Insets(10, 10, 10, 10));
+        rightPanel.add(new JScrollPane(workoutInfo), BorderLayout.CENTER);
+
+        addExerciseButton = new JButton("Add Exercise");
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(addExerciseButton);
+        rightPanel.add(buttonPanel, BorderLayout.SOUTH);
+
+        addExerciseButton.addActionListener(e -> handleAddExercise());
+
+        return rightPanel;
     }
 
     // MODIFIES: this
