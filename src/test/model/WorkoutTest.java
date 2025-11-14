@@ -134,4 +134,9 @@ public class WorkoutTest {
         assertEquals("Calf Raise", ex3.get("name"));
         assertEquals(0, ex3.getJSONArray("sets").length());
     }
+
+    @Test
+    void testToString() {
+        assertEquals("Arms", w1.toString());
+    }
 }
