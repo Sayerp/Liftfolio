@@ -6,10 +6,13 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.io.IOException;
 
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 import model.Workout;
 import model.WorkoutHistory;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 // This class was made by referencing SmartHomeUI from B1 practice, geeksforgeeks, and Java Swing documentation
 // Represents the main application user interface for the workout tracker
@@ -17,10 +20,13 @@ import model.WorkoutHistory;
 public class WorkoutTrackerUI extends JFrame {
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
+    private static final String JSON_STORE = "./data/workouts.json";
 
     private WorkoutHistory workouts;
     private DefaultListModel<Workout> workoutListModel;
     private JList<Workout> workoutJList;
+    private JPanel leftPanel;
+    private JPanel rightPanel;
 
     private JButton startButton;
     private JButton removeButton;
@@ -31,6 +37,9 @@ public class WorkoutTrackerUI extends JFrame {
     private JLabel workoutNameLabel;
     private JTextArea workoutInfo;
 
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+
     // MODIFIES: this
     // EFFECTS: creates WorkoutTrackerUI, loads workouts, displays sidebar and main panel
     protected WorkoutTrackerUI() {
@@ -40,6 +49,8 @@ public class WorkoutTrackerUI extends JFrame {
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
 
+        this.jsonWriter = new JsonWriter(JSON_STORE);
+        this.jsonReader = new JsonReader(JSON_STORE);
         workouts = new WorkoutHistory();
         setupPanels();
         loadWorkoutList();
@@ -49,8 +60,8 @@ public class WorkoutTrackerUI extends JFrame {
     // MODIFIES: this
     // EFFECTS: creates split planel to hold left and right panels
     private void setupPanels() {
-        JPanel leftPanel = createLeftPanel();
-        JPanel rightPanel = createRightPanel();
+        leftPanel = createLeftPanel();
+        rightPanel = createRightPanel();
 
         JSplitPane splitPanel = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftPanel, rightPanel);
         splitPanel.setDividerLocation(300);
@@ -124,7 +135,8 @@ public class WorkoutTrackerUI extends JFrame {
     // MODIFIES: this
     // EFFECTS: load workouts from workouts model to DefaultListModel
     private void loadWorkoutList() {
-        // stub
+        workoutListModel.clear();
+        workoutListModel.addAll(workouts.getWorkouts());
     }
 
     // EFFECTS: saves current state of workouts to json file and displays success/error panel 
@@ -133,9 +145,15 @@ public class WorkoutTrackerUI extends JFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS: loads workouts from json file, updates UI list of workouts, and displays success/error panel
+    // EFFECTS: loads workouts from json file, updates UI list of workouts
     private void handleLoad() {
-        // stub
+        try {
+            workouts = jsonReader.read();
+            System.out.println("Loaded from json"); //!!!!!!
+            loadWorkoutList();
+        } catch (IOException e) {
+            System.out.println("Unable to read json file"); //!!!!!!
+        }
     }
 
     // MODIFIES: this
