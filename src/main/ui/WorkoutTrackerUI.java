@@ -26,7 +26,6 @@ public class WorkoutTrackerUI extends JFrame {
     private static final String JSON_STORE = "./data/workouts.json";
 
     private WorkoutHistory workouts;
-    private Workout workout;
     private DefaultListModel<Workout> workoutListModel;
     private JList<Workout> workoutJList;
     private JPanel leftPanel;
@@ -172,7 +171,14 @@ public class WorkoutTrackerUI extends JFrame {
     // EFFECTS: creates new workout with user inputted name, adds workout to workouts model and workoutListModel view,
     //          and selects the workout from left panel list
     private void handleStartWorkout() {
-        // stub
+        String name = JOptionPane.showInputDialog(this, "Enter workout name:");
+
+        if (name != null) {
+            Workout workout = new Workout(name);
+            workouts.addWorkout(workout);
+            workoutListModel.addElement(workout);
+            workoutJList.setSelectedValue(workout, true);
+        }
     }
 
     // MODIFIES: this
@@ -195,10 +201,59 @@ public class WorkoutTrackerUI extends JFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS: if workout not selected do nothing, else create exercise with user prompted user name,
-    //          reps/weights per set, add exercise to workouts model, and display in right info panel
+    // EFFECTS: if workout not selected show pop-up error, else create exercise with user prompted user name,
+    //          reps/weights per set, add exercise to workouts model, and display in right info panel.
+    //          Display error dialog if invalid number entered.
     private void handleAddExercise() {
-        // stub
+        Workout workout = workoutJList.getSelectedValue();
+        if (workout == null) {
+            JOptionPane.showMessageDialog(this, "Select a workout first.");
+            return;
+        }
+
+        String name = JOptionPane.showInputDialog(this, "Exercise Nmee:");
+        if (name == null) {
+            return;
+        }
+
+        String setsString = JOptionPane.showInputDialog(this, "Number of Sets:");
+        if (setsString == null) {
+            return;
+        }
+
+        try {
+            int numSets = Integer.parseInt(setsString);
+            Exercise exercise = new Exercise(name);
+            addSetsToExercise(workout, exercise, numSets);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid number. Exercise Cancelled");
+        }
+    }
+
+    // MODIFIES: this, workout, exercise
+    // EFFECTS: loop prompt for reps/weight numSets times adding each set to exercise, then add exercise
+    //          to workout, and update UI
+    //          Throws NumberFormatException if input is invalid 
+    private void addSetsToExercise(Workout workout, Exercise exercise, int numSets) throws NumberFormatException {
+        for (int i = 1; i <= numSets; i++) {
+            String repString = JOptionPane.showInputDialog(this, "Set " + i + " Reps:");
+
+            if (repString == null) {
+                return;
+            }
+            int reps = Integer.parseInt(repString);
+
+            String weightString = JOptionPane.showInputDialog(this, "Set " + i + " Weight (lbs):");
+            if (weightString == null) {
+                return;
+            }
+            double weight = Double.parseDouble(weightString);
+
+            exercise.addSet(reps, weight);
+        }
+
+        workout.addExercise(exercise);
+        updateInfoPanel(workout);
     }
 
     // MODIFIES: this
