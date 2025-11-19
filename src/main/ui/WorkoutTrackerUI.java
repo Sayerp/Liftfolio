@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
@@ -143,20 +144,27 @@ public class WorkoutTrackerUI extends JFrame {
         workoutListModel.addAll(workouts.getWorkouts());
     }
 
-    // EFFECTS: saves current state of workouts to json file and displays success/error panel 
+    // EFFECTS: saves current state of workouts to json file, displays error dialog if save unsuccessful 
     private void handleSave() {
-        // stub
+        try {
+            jsonWriter.open();
+            jsonWriter.write(workouts);
+            jsonWriter.close();
+            System.out.println("Saved " + workouts.getWorkouts().size() + " workouts to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(this, "Unable to write to file: " + JSON_STORE);
+        }
     }
 
     // MODIFIES: this
-    // EFFECTS: loads workouts from json file, updates UI list of workouts
+    // EFFECTS: loads workouts from json file, updates UI list of workouts, displays error if load unsuccessful
     private void handleLoad() {
         try {
             workouts = jsonReader.read();
-            System.out.println("Loaded from json"); //!!!!!!
+            System.out.println("Loaded from json");
             loadWorkoutList();
         } catch (IOException e) {
-            System.out.println("Unable to read json file"); //!!!!!!
+            JOptionPane.showMessageDialog(this, "Unable to read from file: " + JSON_STORE);
         }
     }
 
@@ -168,9 +176,15 @@ public class WorkoutTrackerUI extends JFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS: if workout was selected remove from workouts model and workoutListModel view, else do nothin
+    // EFFECTS: if workout was selected remove from workouts model and workoutListModel view, else do nothing
     private void handleRemoveWorkout() {
-        // stub
+        int workoutIndex = workoutJList.getSelectedIndex();
+
+        if (workoutIndex != -1) {
+            workouts.removeWorkout(workoutIndex);
+            workoutListModel.remove(workoutIndex);
+            updateInfoPanel(null);
+        }
     }
 
     // MODIFIES: this
