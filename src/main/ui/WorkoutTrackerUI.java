@@ -9,6 +9,8 @@ import java.awt.Insets;
 import java.io.IOException;
 
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
+import model.Exercise;
+import model.ExerciseSet;
 import model.Workout;
 import model.WorkoutHistory;
 import persistence.JsonReader;
@@ -23,6 +25,7 @@ public class WorkoutTrackerUI extends JFrame {
     private static final String JSON_STORE = "./data/workouts.json";
 
     private WorkoutHistory workouts;
+    private Workout workout;
     private DefaultListModel<Workout> workoutListModel;
     private JList<Workout> workoutJList;
     private JPanel leftPanel;
@@ -119,6 +122,7 @@ public class WorkoutTrackerUI extends JFrame {
         workoutInfo.setLineWrap(true);
         workoutInfo.setWrapStyleWord(true);
         workoutInfo.setMargin(new Insets(10, 10, 10, 10));
+        workoutInfo.setFont(new Font("Arial", Font.BOLD, 12));
         rightPanel.add(new JScrollPane(workoutInfo), BorderLayout.CENTER);
 
         addExerciseButton = new JButton("Add Exercise");
@@ -172,7 +176,8 @@ public class WorkoutTrackerUI extends JFrame {
     // MODIFIES: this
     // EFFECTS: get selected workout and display information in right info panel
     private void handleSelectedWorkout() {
-        // stub
+        Workout workout = workoutJList.getSelectedValue();
+        updateInfoPanel(workout);
     }
 
     // MODIFIES: this
@@ -185,7 +190,28 @@ public class WorkoutTrackerUI extends JFrame {
     // MODIFIES: this
     // EFFECTS: if workout not selected display default message, else set right panel label with workout name,
     //          display rows for each exercise in center, and scrolls to top
-    private void updateInfoPanel() {
-        // stub
+    private void updateInfoPanel(Workout workout) {
+        if (workout == null) {
+            workoutNameLabel.setText("Select or start a workout");
+            workoutInfo.setText("");
+            return;
+        }
+
+        workoutNameLabel.setText(workout.getName());
+        String workoutDetail = "";
+
+        for (Exercise exercise : workout.getExercises()) {
+            workoutDetail += exercise.getName() + ": ";
+            for (ExerciseSet set : exercise.getSets()) {
+                workoutDetail += set.toString() + " | ";
+            }
+            if (!exercise.getSets().isEmpty()) {
+                workoutDetail = workoutDetail.substring(0, workoutDetail.length() - 3);
+            }
+            workoutDetail += "\n\n";
+        }
+
+        workoutInfo.setText(workoutDetail);
+        workoutInfo.setCaretPosition(0);
     }
 }
