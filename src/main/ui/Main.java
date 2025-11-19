@@ -7,6 +7,7 @@ import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 public class Main {
     // EFFECTS: creates an instance of the WorkoutTracker class
     public static void main(String[] args) throws Exception {
+        new WorkoutTrackerUI();
         new WorkoutTrackerApp();
     }
 }
