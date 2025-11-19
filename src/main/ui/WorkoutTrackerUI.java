@@ -211,7 +211,7 @@ public class WorkoutTrackerUI extends JFrame {
             return;
         }
 
-        String name = JOptionPane.showInputDialog(this, "Exercise Nmee:");
+        String name = JOptionPane.showInputDialog(this, "Exercise Name:");
         if (name == null) {
             return;
         }
