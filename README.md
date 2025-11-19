@@ -19,3 +19,12 @@ This project interests me because most workout tracking apps I’ve tried includ
 - As a user, I want to have the option to save my workout history to a file
 - As a user, I want to have the option to load my workout history from a file
 - As a user, I want to be able to see my progress for a specific exercise over time displayed as a graph
+
+## Instructions for End User
+
+- You can view the panel that displays the Xs that have already been added to the Y by **viewing the left panel**
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by pressing **"Start Workout"** (bottom of left panel) and then **"Add Exercise"** (bottom of right panel)
+- You can generate the second required action related to the user story "adding multiple Xs to a Y" by selecting a workout from the left panel and pressing the **"Remove Workout" button** (bottom of left panel)
+- You can locate my visual component by looking at the **top-left of the application** for my logo
+- You can save the state of my application by pressing the **"Save" button** found at the bottom of the left panel
+- You can reload the state of my application by pressing the **"Load" button** found at the bottom of the left panel
