@@ -22,7 +22,7 @@ This project interests me because most workout tracking apps I’ve tried includ
 
 ## Instructions for End User
 
-- You can view the panel that displays the Xs that have already been added to the Y by **viewing the left panel**
+- You can view the panel that displays the Xs that have already been added to the Y by **viewing the left panel** to see workouts in workout history
 - You can generate the first required action related to the user story "adding multiple Xs to a Y" by pressing **"Start Workout"** (bottom of left panel) and then **"Add Exercise"** (bottom of right panel)
 - You can generate the second required action related to the user story "adding multiple Xs to a Y" by selecting a workout from the left panel and pressing the **"Remove Workout" button** (bottom of left panel)
 - You can locate my visual component by looking at the **top-left of the application** for my logo
