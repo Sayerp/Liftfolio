@@ -6,10 +6,14 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
+import model.Event;
+import model.EventLog;
 import model.Exercise;
 import model.ExerciseSet;
 import model.Workout;
@@ -20,7 +24,7 @@ import persistence.JsonWriter;
 // This class was made by referencing SmartHomeUI from B1 practice, geeksforgeeks, and Java Swing documentation
 // Represents the main application user interface for the workout tracker
 @ExcludeFromJacocoGeneratedReport
-public class WorkoutTrackerUI extends JFrame {
+public class WorkoutTrackerUI extends JFrame implements WindowListener {
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
     private static final String JSON_STORE = "./data/workouts.json";
@@ -57,6 +61,9 @@ public class WorkoutTrackerUI extends JFrame {
         workouts = new WorkoutHistory();
         setupPanels();
         loadWorkoutList();
+
+        addWindowListener(this);
+
         setVisible(true);
     }
 
@@ -282,5 +289,42 @@ public class WorkoutTrackerUI extends JFrame {
 
         workoutInfo.setText(workoutDetail);
         workoutInfo.setCaretPosition(0);
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        printLog();
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+    }
+
+    // EFFECTS: print all EventLog events to console 
+    private void printLog() {
+        for (Event event : EventLog.getInstance()) {
+            System.out.println(event.toString() + "\n");
+        }        
     }
 }
