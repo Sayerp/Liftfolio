@@ -26,12 +26,11 @@ public class JsonReader {
     }
 
     // Method is from JsonSerializationDemo
-    // EFFECTS: reads workout histroy from file, logs the event, and returns it;
+    // EFFECTS: reads workout histroy from file and returns it;
     //          throws IOException if an error occurs reading data from file
     public WorkoutHistory read() throws IOException {
         String workoutHistoryData = readFile(source);
         JSONObject workoutsJson = new JSONObject(workoutHistoryData);
-        EventLog.getInstance().logEvent(new Event("Loaded workouts from " + source));
         return parseWorkoutHistory(workoutsJson);
     }
 
