@@ -20,9 +20,11 @@ public class Workout implements Writable {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds an exercise to exercises
+    // EFFECTS: adds an exercise to exercises, and logs the event
     public void addExercise(Exercise exercise) {
         exercises.add(exercise);
+        EventLog.getInstance().logEvent(new Event("Added " + exercise.getSets().size() + " sets of "
+                                                  + exercise.getName() + " to " + name + "!"));
     }
 
     // REQUIRES: exercises.size() > 0, and 0 <= index < exercises.size()
