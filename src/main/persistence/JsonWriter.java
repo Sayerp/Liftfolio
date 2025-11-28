@@ -1,7 +1,5 @@
 package persistence;
 
-import model.Event;
-import model.EventLog;
 import model.WorkoutHistory;
 import org.json.JSONObject;
 
@@ -28,12 +26,10 @@ public class JsonWriter {
     }
 
     // MODIFIES: this
-    // EFFECTS: writes JSON representation of workout history to file, and logs the event
+    // EFFECTS: writes JSON representation of workout history to file
     public void write(WorkoutHistory workouts) {
         JSONObject workoutsJson = workouts.toJson();
         saveToFile(workoutsJson.toString(TAB));
-        EventLog.getInstance().logEvent(new Event("Saved " + workouts.getWorkouts().size() + " workouts to "
-                                                  + destination));
     }
 
     // MODIFIES: this
