@@ -28,3 +28,29 @@ This project interests me because most workout tracking apps I’ve tried includ
 - You can locate my visual component by looking at the **top-left of the application** for my logo
 - You can save the state of my application by pressing the **"Save" button** found at the bottom of the left panel
 - You can reload the state of my application by pressing the **"Load" button** found at the bottom of the left panel
+
+
+## Phase 4: Task 2
+Thu Nov 27 19:42:35 PST 2025
+Legs workout has been added!
+
+Thu Nov 27 19:42:56 PST 2025
+Added 2 sets of Squats to Legs!
+
+Thu Nov 27 19:43:08 PST 2025
+Added 1 sets of Leg Press to Legs!
+
+Thu Nov 27 19:43:21 PST 2025
+ARmsssdf workout has been added!
+
+Thu Nov 27 19:43:25 PST 2025
+ARmsssdf workout has been removed.
+
+Thu Nov 27 19:43:29 PST 2025
+Arms workout has been added!
+
+Thu Nov 27 19:43:44 PST 2025
+Added 2 sets of Curls to Arms!
+
+Thu Nov 27 19:43:50 PST 2025
+Saved 2 workouts.
