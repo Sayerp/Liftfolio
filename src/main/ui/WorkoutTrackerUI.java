@@ -149,7 +149,7 @@ public class WorkoutTrackerUI extends JFrame {
             jsonWriter.open();
             jsonWriter.write(workouts);
             jsonWriter.close();
-            System.out.println("Saved " + workouts.getWorkouts().size() + " workouts to " + JSON_STORE);
+            // System.out.println("Saved " + workouts.getWorkouts().size() + " workouts to " + JSON_STORE);
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(this, "Unable to write to file: " + JSON_STORE);
         }
@@ -160,7 +160,7 @@ public class WorkoutTrackerUI extends JFrame {
     private void handleLoad() {
         try {
             workouts = jsonReader.read();
-            System.out.println("Loaded from json");
+            // System.out.println("Loaded from json");
             loadWorkoutList();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this, "Unable to read from file: " + JSON_STORE);
