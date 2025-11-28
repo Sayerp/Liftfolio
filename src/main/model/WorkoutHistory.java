@@ -17,16 +17,18 @@ public class WorkoutHistory implements Writable {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds given workout to workouts
+    // EFFECTS: adds given workout to workouts, and logs the event
     public void addWorkout(Workout workout) {
         workouts.add(workout);
+        EventLog.getInstance().logEvent(new Event(workout.getName() + " workout has been added!"));
     }
 
     // REQUIRES: workouts.size() > 0, and 0 <= index < workouts.size()
     // MODIFIES: this
-    // EFFECTS: removes workout at given index position from workouts
+    // EFFECTS: removes workout at given index position from workouts, and logs the event
     public void removeWorkout(int index) {
         workouts.remove(index);
+        EventLog.getInstance().logEvent(new Event(workouts.get(index).getName() + " workout has been removed."));
     }
 
     // REQUIRES: workouts.size() > 0, and 0 <= index < workouts.size()
