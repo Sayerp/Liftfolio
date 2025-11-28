@@ -54,3 +54,10 @@ Added 2 sets of Curls to Arms!
 
 Thu Nov 27 19:43:50 PST 2025
 Saved 2 workouts.
+
+
+## Phase 4: Task 3
+
+If I had more time to work on the project, I would refactor its design to incorporate the Observer Pattern to increase cohesion of the `WorkoutTrackerUI` class and decouple it from `WorkoutHistory`. My current design of `WorkoutTrackerUI` has low cohesion because it is responsible for manually syncing the frontend and backend. For example, `handleStartWorkout()` method in `WorkoutTrackerUI` must call `workouts.add(workout)` and `workoutListModel.addElement(workout)` to make sure the data stays in sync. If one of these method calls is missed, the data will be out of sync resulting in UI/data persistence bugs. 
+
+To add the Observer Pattern, I would refactor `WorkoutHistory` to extend an Observable class and have `WorkoutTrackerUI` implement an Observer interface. Now the `handleStartWorkout()` method would only have to call `workouts.add(workout)`. The `WorkoutHistory` class would notify the UI when its state changes, and the UI would automatically react to this notification to update the frontend list. By removing the need for UI to explicitly manage the frontend list, we can guarantee the UI will always be in sync with the model data. This refactor would also make it easier to add new frontend views in the future.
