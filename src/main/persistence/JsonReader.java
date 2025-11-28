@@ -1,7 +1,5 @@
 package persistence;
 
-import model.Event;
-import model.EventLog;
 import model.Exercise;
 import model.ExerciseSet;
 import model.Workout;
