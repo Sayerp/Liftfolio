@@ -1,6 +1,4 @@
-# My Personal Project
-
-## Liftfolio
+# Liftfolio
 
 The aim of this project is to design a workout tracker application that allows users to log their workouts and view progress over time. Users will be able to record sessions consisting of multiple exercises and edit or remove those exercises. The application will also provide features such as history lookup, progression analysis for individual exercises, and graphical summaries that make it easy to visualize improvements across workout sessions.
 
